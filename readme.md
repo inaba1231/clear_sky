@@ -22,9 +22,19 @@ Sky.rb takes in a heatmap image and produces the pixel data of the heatmap.
 
 `rub sky.rb`
 
-## Modules required (Orbital Student take note)
+## mapper.rb
+
+## front-end
+
+## miner.rb
+
+## simple api - api_controller.rb
+
+
+## Modules required (Orbital Students, please take note)
 
 - extend sky.rb to extract and calculate the sky intensity
 - write a miner to retrieve more heatmaps from source
 - create an api to serve these information
 - build a front-end to display these information for demo or simple usage
+- write a mapper to map coordinate to pixel
