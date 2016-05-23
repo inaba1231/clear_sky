@@ -1,3 +1,5 @@
+![image](image.png)
+
 #Clear Sky
 
 Project Clear Sky uses heatmap from weather.gov.sg to analyse and extract real-time information of the sky for further analysis and 5 min weather forecast.
@@ -29,7 +31,6 @@ Sky.rb takes in a heatmap image and produces the pixel data of the heatmap.
 ## miner.rb
 
 ## simple api - api_controller.rb
-
 
 ## Modules required (Orbital Students, please take note)
 
