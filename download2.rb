@@ -24,7 +24,7 @@ end
 #start from 10min ago
 timeStamp-= 600
 
-#loop through the array and save each timestamp image of the rain
+
 # boolean statement to ensure mining are looping
 mining = true
 
