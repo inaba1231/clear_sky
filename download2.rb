@@ -8,16 +8,11 @@ timeNow = Time.now
 
 #round off the minute to the nearest 5, create a new Time obj that exclude seconds
 check = timeNow.min % 10
-if check % 10 == 0
-	timeStamp = Time.new(timeNow.year,timeNow.month,timeNow.day, timeNow.hour,timeNow.min, 0, "+08:00")
+if check >= 5
+  timeStamp = Time.new(timeNow.year,timeNow.month,timeNow.day, timeNow.hour, 0, 0, "+08:00")
 
-elsif check >= 5
-	minute = timeNow.min - (check - 5)
-	timeStamp = Time.new(timeNow.year,timeNow.month,timeNow.day, timeNow.hour, minute, 0, "+08:00")
-
-elsif check < 5
-	minute = timeNow.min - check 
-	timeStamp = Time.new(timeNow.year,timeNow.month,timeNow.day, timeNow.hour, minute, 0, "+08:00")
+else 
+  timeStamp = Time.new(timeNow.year,timeNow.month,timeNow.day, timeNow.hour, 0, 0, "+08:00")
 end
 
 
@@ -34,35 +29,32 @@ mining = true
 # any exception will cause the program to sleep for 60 seconds before continuing
 
 #loop through the array and save each timestamp image of the rain
-while mining == true do
+begin
+  while true do
+ 
+    year = timeStamp.year
+    month = timeStamp.strftime("%m")
+    day = timeStamp.strftime("%d")
+    hour = timeStamp.strftime("%H")
+    min = timeStamp.strftime("%M")
 
-  begin
-      year = timeStamp.year
-      month = timeStamp.strftime("%m")
-      day = timeStamp.strftime("%d")
-      hour = timeStamp.strftime("%H")
-      min = timeStamp.strftime("%M")
+    image_path = "http://www.weather.gov.sg/files/rainarea/50km/v2/dpsri_70km_#{year}#{month}#{day}#{hour}#{min}0000dBR.dpsri.png"
+    image_name = image_path.split("v2/")[1]
 
-      image_path = "http://www.weather.gov.sg/files/rainarea/50km/v2/dpsri_70km_#{year}#{month}#{day}#{hour}#{min}0000dBR.dpsri.png"
-      image_name = image_path.split("v2/")[1]
-
-      open(image_path) {|f|
-        
-        File.open("#{image_name}", "wb") do |file|
-          
-          file.puts f.read
+    open(image_path) {|f|
+      File.open("#{image_name}", "wb") do |file|
+        file.puts f.read
       end
     }
-  rescue
-    #exception, sleep and retry again just incase exception is not caused
-    #by end of  tunnel/ invalid link
-    sleep(60)
-    retry
-  end
-    
-  timeStamp-= 300
-  sleep(10)
+    timeStamp-= 300
+    sleep(10)
 
+end
+rescue
+  #exception, sleep and retry again just incase exception is not caused
+  #by end of  tunnel/ invalid link
+  sleep(60)
+  retry
 end
 
 
