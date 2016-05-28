@@ -8,16 +8,12 @@ timeNow = Time.now
 
 #round off the minute to the nearest 5, create a new Time obj that exclude seconds
 check = timeNow.min % 10
-if check % 10 == 0
-	timeStamp = Time.new(timeNow.year,timeNow.month,timeNow.day, timeNow.hour,timeNow.min, 0, "+08:00")
-
-elsif check >= 5
+if check >= 5
 	minute = timeNow.min - (check - 5)
 	timeStamp = Time.new(timeNow.year,timeNow.month,timeNow.day, timeNow.hour, minute, 0, "+08:00")
 
-elsif check < 5
-	minute = timeNow.min - check 
-	timeStamp = Time.new(timeNow.year,timeNow.month,timeNow.day, timeNow.hour, minute, 0, "+08:00")
+else 
+	timeStamp = Time.new(timeNow.year,timeNow.month,timeNow.day, timeNow.hour, 0, 0, "+08:00")
 end
 
 # store 19 5 minute interval time obj starting from 10 min ago in a arr
@@ -63,6 +59,6 @@ time_text = html.css('ul.list-unstyled').css('li').map { |e|  e['id']}.compact
 time_text.each do |t|
 puts t
 end
-/
 =end
+
 
