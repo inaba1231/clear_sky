@@ -18,26 +18,30 @@ HSL color value:
 60  : yellow
 0   : red
 =end
-
 path = "/home/tan/Desktop/hey/dpsri_70km_2016052405450000dBR.dpsri.png"
 img =  Magick::Image.read(path).first
 hueArr = Array.new(img.rows) {Array.new(img.columns) }
 img.rows.times do |row|
     img.columns.times do |column|
         #a 10x10 grid centered on coordinate x , y
-        x = row - (10/2)
-        y = column - (10/2)
+        x = row - (1/2)
+        y = column - (1/2)
 
         #create an Arr of all the pixel within the 10x10 square
         #constitute to build a new sub-image
-        pixels_at_location = img.dispatch(x.to_i, y.to_i, 10, 10, "RGB")
-        new_img = Magick::Image.constitute(10, 10, "RGB", pixels_at_location)
+        pixels_at_location = img.dispatch(x.to_i, y.to_i, 1, 1, "RGB")
+        new_img = Magick::Image.constitute(1, 1, "RGB", pixels_at_location)
 
         #scale image to one pixel ,grab the average color and 
         # get the first hue value
         pix = new_img.scale(1,1)
         averageColor = pix.pixel_color(0,0)
+        
         hueArr[row][column] = averageColor.to_hsla.first
+        puts averageColor.to_hsla.first
+
+        #testing
+        sleep(0.5)
 
 
 
