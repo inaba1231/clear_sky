@@ -1,13 +1,20 @@
-![image](image.png)
+![image](images/image.png)
 
 #Clear Sky
 
-Project Clear Sky uses heatmap from weather.gov.sg to analyse and extract real-time information of the sky for further analysis and 5 min weather forecast.
+Project Clear Sky uses heatmap from weather.gov.sg to analyse and extract real-time information of the sky for further analysis and 10 min weather forecast.
 
-Currently, weather.gov.sg provides a 2-hour weather forecasting for areas within Singapore. This can be improved using the extracted data to answer two important questions:
+Currently, weather.gov.sg provides a 2-hour weather forecasting for areas within Singapore.
 
-Is area X raining now?
-Is the sky clear or dark at area Y now?
+But what if we can provide the people with answers to these example questions:
+
+- how big is the current rain that i am in?
+- should you continue to ride for motorist or should you get down to change to your raincoat?
+- Is the road wet at area X?
+- Is there rain at nearby area?
+- How long have area X been raining?
+- Is area X raining now?
+- Is the sky clear or dark at area Y now?
 
 ## Potential Impact
 
@@ -31,6 +38,7 @@ Sky.rb takes in a heatmap image and produces the pixel data of the heatmap.
 ## miner.rb
 
 ## simple api - api_controller.rb
+
 
 ## Modules required (Orbital Students, please take note)
 
